@@ -1,0 +1,32 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // Takes URL from .env
+}
+
+model User {
+  userId    Int         @id @default(autoincrement())
+  email     String      @unique
+  passwordHash String  @map("password_hash")
+  
+  createdAt DateTime    @default(now()) @map("created_at")
+  watchlists Watchlist[] // Relation field
+
+  @@map("users") // Maps this model to the 'users' table
+}
+
+model Watchlist {
+  userId    Int      @map("user_id")
+  ticker    String   @db.VarChar(20) // Specify max length if needed
+  addedAt   DateTime @default(now()) @map("added_at")
+  user      User     @relation(fields: [userId], references: [userId], onDelete: Cascade)
+
+  @@id([userId, ticker])      // Composite primary key
+  @@index([ticker])          // Index for faster ticker lookups
+  @@map("watchlists")      // Maps this model to the 'watchlists' table
+}
