@@ -1,0 +1,22 @@
+{
+  "name": "cashflo-ws",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dashboard": "node dashboard.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@neabyte/candlestick-cli": "^1.1.2",
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.11.0",
+    "chalk": "^6.0.0",
+    "dotenv": "^16.5.0",
+    "socket.io-client": "^4.8.1"
+  }
+}

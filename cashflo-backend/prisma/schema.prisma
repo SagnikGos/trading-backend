@@ -1,0 +1,66 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  userId    Int         @id @default(autoincrement())
+  email     String      @unique
+  passwordHash String  @map("password_hash")
+  balance   Float       @default(100000.0)
+  
+  createdAt DateTime    @default(now()) @map("created_at")
+  watchlists Watchlist[]
+  orders    Order[]
+  positions Position[]
+
+  @@map("users")
+}
+
+model Watchlist {
+  userId    Int      @map("user_id")
+  ticker    String
+  addedAt   DateTime @default(now()) @map("added_at")
+  user      User     @relation(fields: [userId], references: [userId], onDelete: Cascade)
+
+  @@id([userId, ticker])
+  @@index([ticker])
+  @@map("watchlists")
+}
+
+model Order {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  ticker    String
+  type      String   // MARKET, LIMIT
+  side      String   // BUY, SELL
+  quantity  Int
+  price     Float?   // Null for MARKET orders
+  status    String   @default("OPEN") // OPEN, FILLED, CANCELLED
+  createdAt DateTime @default(now()) @map("created_at")
+  
+  user      User     @relation(fields: [userId], references: [userId], onDelete: Cascade)
+
+  @@index([userId, status])
+  @@index([ticker, status])
+  @@map("orders")
+}
+
+model Position {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  ticker    String
+  quantity  Int      @default(0)
+  avgPrice  Float    @default(0.0) @map("avg_price")
+  
+  user      User     @relation(fields: [userId], references: [userId], onDelete: Cascade)
+
+  @@unique([userId, ticker])
+  @@map("positions")
+}
