@@ -1,4 +1,4 @@
-# ⚡ CashFlo Terminal: Real-Time Trading Engine & Market Platform
+# CashFlo Terminal: Real-Time Trading Engine & Market Platform
 
 [![Node.js](https://img.shields.io/badge/Node.js-v18+-68A063?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Express.js](https://img.shields.io/badge/Express.js-5.x-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
@@ -12,30 +12,30 @@
 
 ---
 
-## 📌 Table of Contents
-- [Key Features & Engineering Highlights](#-key-features--engineering-highlights)
-- [System Architecture](#-system-architecture)
-- [Trade Lifecycle & Execution Flow](#-trade-lifecycle--execution-flow)
-- [Terminal User Interface (TUI)](#-terminal-user-interface-tui)
-- [Tech Stack](#-tech-stack)
-- [API & WebSocket Protocol](#-api--websocket-protocol)
-- [Getting Started](#-getting-started)
-- [Project Structure](#-project-structure)
+## Table of Contents
+- [Key Features & Engineering Highlights](#key-features--engineering-highlights)
+- [System Architecture](#system-architecture)
+- [Trade Lifecycle & Execution Flow](#trade-lifecycle--execution-flow)
+- [Terminal User Interface (TUI)](#terminal-user-interface-tui)
+- [Tech Stack](#tech-stack)
+- [API & WebSocket Protocol](#api--websocket-protocol)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
 
 ---
 
-## 🌟 Key Features & Engineering Highlights
+## Key Features & Engineering Highlights
 
-* ⚡ **Event-Driven Matching Engine:** Evaluates queued `MARKET` and `LIMIT` orders against incoming real-time price ticks with sub-millisecond execution latency.
-* 🔒 **ACID Transactional Portfolio Management:** Leverages Prisma interactive transactions (`prisma.$transaction`) to guarantee atomic balance deductions, position updates, and weighted-average price calculations with zero race conditions or double-spending.
-* 🎲 **Stochastic Market Simulator:** Built-in **Geometric Brownian Motion (GBM)** generator with Ornstein-Uhlenbeck mean-reversion drift to produce continuous, realistic market ticks without hitting external API rate limits (HTTP 429).
-* 📡 **Room-Isolated WebSocket Streaming:** Partitions high-frequency price feeds into discrete ticker channels (`stock_{TICKER}`) via Socket.IO, eliminating global network broadcast storms.
-* 📊 **Terminal Candlestick Visualization:** Real-time Open-High-Low-Close (OHLC) financial candlestick charts synthesized on the fly from scalar tick streams and rendered directly in ASCII.
-* 🛡️ **End-to-End Stateless Security:** JWT token authentication enforced across both HTTP REST endpoints and WebSocket TCP connection handshakes.
+* **Event-Driven Matching Engine:** Evaluates queued `MARKET` and `LIMIT` orders against incoming real-time price ticks with sub-millisecond execution latency.
+* **ACID Transactional Portfolio Management:** Leverages Prisma interactive transactions (`prisma.$transaction`) to guarantee atomic balance deductions, position updates, and weighted-average price calculations with zero race conditions or double-spending.
+* **Stochastic Market Simulator:** Built-in **Geometric Brownian Motion (GBM)** generator with Ornstein-Uhlenbeck mean-reversion drift to produce continuous, realistic market ticks without hitting external API rate limits (HTTP 429).
+* **Room-Isolated WebSocket Streaming:** Partitions high-frequency price feeds into discrete ticker channels (`stock_{TICKER}`) via Socket.IO, eliminating global network broadcast storms.
+* **Terminal Candlestick Visualization:** Real-time Open-High-Low-Close (OHLC) financial candlestick charts synthesized on the fly from scalar tick streams and rendered directly in ASCII.
+* **End-to-End Stateless Security:** JWT token authentication enforced across both HTTP REST endpoints and WebSocket TCP connection handshakes.
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```mermaid
 flowchart TB
@@ -80,7 +80,7 @@ flowchart TB
 
 ---
 
-## ⚡ Trade Lifecycle & Execution Flow
+## Trade Lifecycle & Execution Flow
 
 ```mermaid
 sequenceDiagram
@@ -114,7 +114,7 @@ sequenceDiagram
 
 ---
 
-## 🖥️ Terminal User Interface (TUI)
+## Terminal User Interface (TUI)
 
 The Bloomberg-style terminal dashboard is structured across a responsive 12x12 ANSI grid layout:
 
@@ -136,7 +136,7 @@ The Bloomberg-style terminal dashboard is structured across a responsive 12x12 A
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-### ⌨️ Interactive Terminal Commands
+### Interactive Terminal Commands
 
 | Command | Syntax | Description | Example |
 | :--- | :--- | :--- | :--- |
@@ -148,7 +148,7 @@ The Bloomberg-style terminal dashboard is structured across a responsive 12x12 A
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technologies | Role & Purpose |
 | :--- | :--- | :--- |
@@ -161,7 +161,7 @@ The Bloomberg-style terminal dashboard is structured across a responsive 12x12 A
 
 ---
 
-## 📡 API & WebSocket Protocol
+## API & WebSocket Protocol
 
 ### REST Endpoints
 
@@ -186,7 +186,7 @@ The Bloomberg-style terminal dashboard is structured across a responsive 12x12 A
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 * **Node.js** (v18.0.0 or higher)
@@ -222,7 +222,7 @@ npm run dashboard
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 trading-backend/
@@ -249,5 +249,5 @@ trading-backend/
 
 ---
 
-## 📄 License
+## License
 This project is open-source and licensed under the [ISC License](LICENSE).
